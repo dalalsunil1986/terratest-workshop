@@ -1,8 +1,11 @@
-# 1 | Amazon EC2 Web Server
+# 2 | S3 Bucket file processing
 
-This example deploys an EC2 Instance. 
-To keep this example simple, we specify a User Data script that, while the server is 
-booting, fires up a dirt-simple web server that returns “Hello, World” on port 8080.
+This example creates S3 bucket and Lambda function to process uploaded file.
+
+### How it works 
+
+For uploaded file to S3 called `file.txt` with content `Hello` result will be
+created file `new_file.txt` with content `Hello, World!` in the same bucket.
 
 ## Terraform
 
@@ -32,4 +35,4 @@ booting, fires up a dirt-simple web server that returns “Hello, World” on po
 
 ## Next example
 
-`git checkout step2`
+`git checkout step3`
