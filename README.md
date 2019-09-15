@@ -6,12 +6,12 @@ This repository contains materials for use in a [Terratest](https://github.com/g
 The following branches contains some simple examples of [Terraform](https://www.terraform.io/) infrastructure code with 
 automated tests created with [Terratest](https://github.com/gruntwork-io/terratest).
 
-| Example name                                       | Branch               |
-|----------------------------------------------------|----------------------|
-| Amazon EC2 Web Server                              | `git checkout step1` |
-| S3 Bucket file processing                          | `git checkout step2` |
-| RESTful shopping cart - Saving order to DynamoDB   | `git checkout step3` |
-| RESTful shopping cart - Sending order notification | `git checkout step4` |
+| Example name                                                                                                   | Branch               |
+|----------------------------------------------------------------------------------------------------------------|----------------------|
+| [Amazon EC2 Web Server  ](https://github.com/rmitula/terratest-workshop/tree/step1)                            | `git checkout step1` |
+| [S3 Bucket file processing](https://github.com/rmitula/terratest-workshop/tree/step2)                          | `git checkout step2` |
+| [RESTful shopping cart - Saving order to DynamoDB](https://github.com/rmitula/terratest-workshop/tree/step3)   | `git checkout step3` |
+| [RESTful shopping cart - Sending order notification](https://github.com/rmitula/terratest-workshop/tree/step4) | `git checkout step4` |
 
 ## Requirements
 
