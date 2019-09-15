@@ -13,9 +13,6 @@ automated tests created with [Terratest](https://github.com/gruntwork-io/terrate
 | RESTful shopping cart - Saving order to DynamoDB   | `git checkout step3` |
 | RESTful shopping cart - Sending order notification | `git checkout step4` |
 
-This repository contains infrastructure modules and the automated tests for it to deploy real resources into your 
-AWS account which can cost you money.
-
 ## Requirements
 
 1. Install [Terraform](https://www.terraform.io/) (requires version >= 0.12.0). and make sure it's on your `PATH`.
