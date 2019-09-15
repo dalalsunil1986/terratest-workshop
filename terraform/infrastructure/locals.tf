@@ -29,4 +29,8 @@ locals {
   database = {
     table_name = "${lower(local.prefix)}-terratest-workshop"
   }
+
+  notification = {
+    topic_name = "${local.prefix}-NotificationSender"
+  }
 }

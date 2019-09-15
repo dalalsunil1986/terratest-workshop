@@ -1,8 +1,8 @@
-# 3 | RESTful shopping cart - Saving order to DynamoDB
+# 4 | RESTful shopping cart - Sending order notification
 
 This example creates REST API architecture to process orders and save them in AWS DynamoDB table.
 
-### How it works 
+### How it works
 
 To create a new order we need to send HTTP POST message to Amazon API Gateway url:
 ```json
@@ -19,6 +19,14 @@ The result is following record created in DynamoDB table:
   "Item": "Sample Item Name",
   "Status": "PENDING"
 }
+```
+
+This example additionally sends email notification about created order.
+To receive this email message we need to manually subscribe to Amazon SNS topic called `PREFIX-ENV-NotificationSender`
+
+Content of email notification should be as follows:
+```
+New order has been created for: Sample Item Name
 ```
 
 ## Terraform
@@ -46,7 +54,3 @@ The result is following record created in DynamoDB table:
 1. Go to `terratest` directory
 1. `dep ensure`
 1. `go test`
-
-## Next example
-
-`git checkout step4`

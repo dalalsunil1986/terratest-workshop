@@ -8,11 +8,14 @@ import uuid
 import os
 
 DB_TABLE_NAME = os.environ['DB_TABLE_NAME']
+SNS_NOTIFICATION_TOPIC_ARN = os.environ["SNS_NOTIFICATION_TOPIC_ARN"]
 
 LOGGER = logging.getLogger()
 LOGGER.setLevel(logging.INFO)
 
 dynamodb = boto3.resource('dynamodb')
+sns = boto3.client('sns')
+
 
 def handler(event, context):
     request_body = json.loads(event['Records'][0]['body'])
@@ -22,6 +25,7 @@ def handler(event, context):
     LOGGER.info(f"REQUEST BODY: {json.dumps(request_body)}")
 
     insert_data(request_item)
+    send_notification(f"New order has been created for: {request_item}")
 
 
 def insert_data(request_item):
@@ -36,3 +40,9 @@ def insert_data(request_item):
         }
     )
     return response
+
+def send_notification(message):
+    sns.publish(
+        TopicArn=SNS_NOTIFICATION_TOPIC_ARN,
+        Message=message,
+    )

@@ -13,10 +13,13 @@ module "api_gateway" {
 
 module "compute" {
   source                            = "../modules/compute"
+  account_id = "${local.account_id}"
+  region = "${local.region}"
   create_order_function_name        = "${local.compute.create_order_function_name}"
   create_order_function_description = "${local.compute.create_order_function_description}"
   create_order_function_source_file = "${local.compute.create_order_function_source_file}"
   orders_queue_name                 = "${local.compute.orders_queue_name}"
+  sns_topic_name                    = "${local.notification.topic_name}"
   db_table_name                     = "${module.database.db_table_name}"
   db_table_arn                      = "${module.database.db_table_arn}"
   tags                              = "${local.tags}"
@@ -29,3 +32,14 @@ module "database" {
   db_write_capacity = 5
   tags              = "${local.tags}"
 }
+
+module "notification" {
+  source            = "../modules/notification"
+  account_id = "${local.account_id}"
+  region = "${local.region}"
+  lambda_name = "${module.compute.create_order_function_name}"
+  lambda_arn = "${module.compute.create_order_function_arn}"
+  sns_topic_name = "${local.notification.topic_name}"
+  tags              = "${local.tags}"
+}
+

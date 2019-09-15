@@ -59,6 +59,19 @@ data "aws_iam_policy_document" "create_order" {
       "dynamodb:PutItem",
     ]
   }
+
+  statement {
+    sid = "AllowSendMessagesToSNS"
+    effect = "Allow"
+
+    resources = [
+      "${local.sns_topic_arn}",
+    ]
+
+    actions = [
+      "sns:Publish",
+    ]
+  }
 }
 
 resource "aws_iam_role" "create_order" {

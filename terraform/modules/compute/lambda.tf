@@ -24,6 +24,7 @@ resource "aws_lambda_function" "create_order" {
   environment {
     variables = {
       DB_TABLE_NAME = "${var.db_table_name}"
+      SNS_NOTIFICATION_TOPIC_ARN = "${local.sns_topic_arn}"
     }
   }
 }
