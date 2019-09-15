@@ -1,24 +1,35 @@
-# Terratest workshop
-This repository contains materials for use in a [Terratest](https://github.com/gruntwork-io/terratest) workshop.
+# 1 | Amazon EC2 Web Server
 
-## About
+This example deploys an EC2 Instance. 
+To keep this example simple, we specify a User Data script that, while the server is 
+booting, fires up a dirt-simple web server that returns “Hello, World” on port 8080.
 
-The following branches contains some simple examples of [Terraform](https://www.terraform.io/) infrastructure code with 
-automated tests created with [Terratest](https://github.com/gruntwork-io/terratest).
+## Terraform
 
-| Example name                                       | Branch               |
-|----------------------------------------------------|----------------------|
-| Amazon EC2 Web Server                              | `git checkout step1` |
-| S3 Bucket file processing                          | `git checkout step2` |
-| RESTful shopping cart - Saving order to DynamoDB   | `git checkout step3` |
-| RESTful shopping cart - Sending order notification | `git checkout step4` |
+### Terraform infrastructure diagram
+![Diagram](diagrams/main.svg)
 
-This repository contains infrastructure modules and the automated tests for it to deploy real resources into your 
-AWS account which can cost you money.
+### Running this module manually
 
-## Requirements
+1. Install [Terraform](https://www.terraform.io/) (requires version >= 0.12.0) and make sure it's on your `PATH`.
+1. Run `terraform init`.
+1. Run `terraform apply`.
+1. When you're done, run `terraform destroy`.
 
-1. Install [Terraform](https://www.terraform.io/) (requires version >= 0.12.0). and make sure it's on your `PATH`.
-1. Install [Golang](https://golang.org/) (requires version >=1.10) and make sure this code is checked out into your 
-`GOPATH` (you can check `GOPATH` directory with `go env`).
-1. Install [Dep](https://github.com/golang/dep) (requires version >=0.5.1).
+## Terratest
+
+### Terratest infrastructure diagram
+![Diagram](diagrams/test.svg)
+
+### Running automated tests against this module
+
+1. Install [Terraform](https://www.terraform.io/) (requires version >= 0.12.0) and make sure it's on your `PATH`.
+1. Install [Golang](https://golang.org/) (requires version >=1.10) and make sure this code is checked out into your `GOPATH`.
+1. Install [Dep](https://github.com/golang/dep) (requires version >=0.5.1)
+1. Go to `terratest` directory
+1. `dep ensure`
+1. `go test`
+
+## Next example
+
+`git checkout step2`
