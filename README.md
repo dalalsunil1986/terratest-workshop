@@ -1,11 +1,25 @@
-# 2 | S3 Bucket file processing
+# 3 | RESTful shopping cart - Saving order to DynamoDB
 
-This example creates S3 bucket and Lambda function to process uploaded file.
+This example creates REST API architecture to process orders and save them in AWS DynamoDB table.
 
 ### How it works 
 
-For uploaded file to S3 called `file.txt` with content `Hello` result will be
-created file `new_file.txt` with content `Hello, World!` in the same bucket.
+To create a new order we need to send HTTP POST message to Amazon API Gateway url:
+```json
+{
+  "item" : "Sample Item Name"
+}
+```
+
+The result is following record created in DynamoDB table:
+```json
+{
+  "Date": "2019-09-13 16:29:14.025002",
+  "Id": "77041b50-4ec7-4444-b42b-fceb0e1dc655",
+  "Item": "Sample Item Name",
+  "Status": "PENDING"
+}
+```
 
 ## Terraform
 
@@ -35,4 +49,4 @@ created file `new_file.txt` with content `Hello, World!` in the same bucket.
 
 ## Next example
 
-`git checkout step3`
+`git checkout step4`
