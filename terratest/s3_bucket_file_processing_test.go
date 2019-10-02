@@ -52,7 +52,7 @@ func TestS3BucketProcessing(t *testing.T) {
 	// 3. Wait for processed object and validate content
 	processedObjectKey := fmt.Sprintf("new_%s", key)
 
-	maxRetries := 10
+	maxRetries := 50
 	timeBetweenRetries := 5 * time.Second
 	description := fmt.Sprintf("Wait for processed file %s", processedObjectKey)
 

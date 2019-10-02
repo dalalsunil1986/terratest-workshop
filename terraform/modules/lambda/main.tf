@@ -16,6 +16,7 @@ resource "aws_lambda_function" "process_file" {
   function_name    = "${var.process_lambda_name}"
   handler          = "lambda_function.handler"
   runtime          = "python3.7"
+  timeout          = 5
   role             = "${aws_iam_role.process_file.arn}"
   filename         = "${data.archive_file.process_file.output_path}"
   source_code_hash = "${data.archive_file.process_file.output_base64sha256}"
